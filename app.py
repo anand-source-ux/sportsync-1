@@ -174,32 +174,34 @@ if choice == "🏠 Home":
         use_container_width=True
     )
 
-
     st.markdown("""
-    <div style="
+<div style="
 background:linear-gradient(135deg,#D8CCE8,#CBB7E8);
 padding:60px;
 border-radius:30px;
 text-align:center;
-color:white;
 box-shadow:0 10px 30px rgba(0,0,0,0.15);
 ">
-   <h1 style="
+
+<h1 style="
 font-size:60px;
-margin-bottom:10px;
+margin-bottom:20px;
 color:#2E2A68;
 ">
 🚀 Welcome to SportSync
 </h1>
 
-    <p style="font-size:22px;">
+<p style="
+font-size:22px;
+color:#4B3F72;
+">
 Book facilities, track performance,
 receive coach insights and manage
 your sports journey.
 </p>
 
-    </div>
-    """, unsafe_allow_html=True)
+</div>
+""", unsafe_allow_html=True)
 
     st.markdown(
         "<h1 style='text-align:center;'>Train • Track • Triumph</h1>",
