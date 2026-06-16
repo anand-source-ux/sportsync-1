@@ -345,38 +345,20 @@ your sports journey.
         st.image("https://images.unsplash.com/photo-1518611012118-696072aa579a?w=500")
         s1, s2, s3, s4 = st.columns(4)
 
-    with s1:
-        st.markdown(
-            "<h4 style='text-align:center;'>🏀 Basketball</h4>",
-            unsafe_allow_html=True
-        )
+    st.markdown("""
+    <div style='text-align:center;
+    font-size:22px;
+    font-weight:bold;
+    color:#6B5CA5;
+    margin-top:15px;'>
 
-    with s2:
-        st.markdown(
-            "<h4 style='text-align:center;'>⚽ Football</h4>",
-            unsafe_allow_html=True
-        )
+    🏀 Basketball &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    ⚽ Football &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    🏏 Cricket &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    🏋️ Fitness
 
-    with s3:
-        st.markdown(
-            "<h4 style='text-align:center;'>🏏 Cricket</h4>",
-            unsafe_allow_html=True
-        )
-
-    with s4:
-        st.markdown(
-            "<h4 style='text-align:center;'>🏋️ Fitness</h4>",
-            unsafe_allow_html=True
-        )
-        
-        st.markdown(
-    "<h4 style='text-align:center;color:#6B5CA5;'>🏀 Basketball</h4>",
-    unsafe_allow_html=True
-)
-    st.markdown(
-        "<div style='height:40px;'></div>",
-        unsafe_allow_html=True
-    )
+    </div>
+    """, unsafe_allow_html=True)
     st.markdown("## 🏆 Achievements")
 
     a1, a2, a3 = st.columns(3)
