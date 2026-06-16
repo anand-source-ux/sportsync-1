@@ -95,8 +95,20 @@ with col1:
     st.title("🏆 SportSync")
 
 with col2:
+
     if st.session_state.logged_in:
-        st.success(st.session_state.username)
+
+        st.success(
+            st.session_state.username
+        )
+
+        if st.button("Logout"):
+
+            st.session_state.logged_in = False
+            st.session_state.username = ""
+            st.session_state.role = ""
+
+            st.rerun()
 
 choice = st.radio(
     "",
