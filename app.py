@@ -166,6 +166,9 @@ if choice == "🏠 Home":
     )
 
     st.button("📅 Book Now")
+    search = st.text_input(
+    "🔍 Search Sports Facilities"
+)
     st.markdown("## 📊 SportSync Live")
 
     a, b, c, d = st.columns(4)
@@ -211,9 +214,42 @@ if choice == "🏠 Home":
 
     with c4:
         st.info("👨‍🏫 Coach Insights")
+    st.markdown("## 🏆 Achievements")
 
+    a1, a2, a3 = st.columns(3)
+
+    with a1:
+        st.success("🥇 First Booking")
+
+    with a2:
+        st.success("🔥 Active Athlete")
+
+    with a3:
+        st.success("🏆 Consistent Performer")
+
+    st.divider()
     st.markdown("## 🔥 Popular Sports")
+    i1, i2, i3, i4 = st.columns(4)
 
+    with i1:
+        st.image(
+            "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=500"
+        )
+
+    with i2:
+        st.image(
+            "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=500"
+        )
+
+    with i3:
+        st.image(
+            "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=500"
+        )
+
+    with i4:
+        st.image(
+            "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=500"
+        )
     s1, s2, s3, s4 = st.columns(4)
 
     with s1:
@@ -274,7 +310,9 @@ elif choice == "📅 Book Slot":
     bookings = pd.read_csv("bookings.csv")
 
     st.header("📊 Dashboard")
-
+    st.success(
+        f"Welcome back, {st.session_state.username} 👋"
+    )
     d1, d2, d3, d4, d5 = st.columns(5)
 
     with d1:
@@ -357,18 +395,7 @@ elif choice == "📅 Book Slot":
 
     st.progress(slot_count / 20)
 
-    st.write(
-        f"Available Spots: {20-slot_count}"
-    )
-
-    if slot_count >= 20:
-
-        st.error(
-            "🚫 Slot Full"
-        )
-
-    else:
-
+    if slot_count < 20:
         if st.button("📅 Confirm Booking"):
 
             booking_code = str(
@@ -416,6 +443,8 @@ elif choice == "📅 Book Slot":
                 qr_file,
                 width=250
             )
+    else:
+        st.warning("This slot is full. Please select a different time or date.")
 
     if st.session_state.role == "Coach":
 
