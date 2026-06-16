@@ -277,20 +277,6 @@ if choice == "🏠 Home":
     with i4: 
         st.image( "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=500" )
 
-    st.markdown("## 🏆 Popular Sports")
-    sports1, sports2, sports3, sports4 = st.columns(4)
-
-    with sports1:
-        st.info("🏀 Basketball")
-
-    with sports2:
-        st.info("⚽ Football")
-
-    with sports3:
-        st.info("🏏 Cricket")
-
-    with sports4:
-        st.info("🎾 Tennis")
 
     st.markdown("## 🏆 Achievements")
 
