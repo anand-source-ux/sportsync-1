@@ -725,8 +725,6 @@ Smart Sports Facility Management & Performance Tracking
 </div>
 """, unsafe_allow_html=True)
 
-    st.markdown("### 🚀 What is SportSync?")
-
     st.markdown("""
 <div style="
 background:white;
