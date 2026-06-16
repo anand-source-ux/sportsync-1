@@ -192,10 +192,6 @@ color:#2E2A68;
 🚀 Welcome to SportSync
 </h1>
 
-🚀 Welcome to SportSync
-</h1>
-                
-
     <p style="font-size:22px;">
 Book facilities, track performance,
 receive coach insights and manage
