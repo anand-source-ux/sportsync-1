@@ -154,6 +154,35 @@ if choice == "🏠 Home":
     )
 
     st.button("📅 Book Now")
+    st.markdown("## 📊 SportSync Live")
+
+    a, b, c, d = st.columns(4)
+
+    with a:
+        st.metric(
+            "🏀 Facilities",
+            "8"
+        )
+
+    with b:
+        st.metric(
+            "👥 Users",
+            "250+"
+        )
+
+    with c:
+        st.metric(
+            "📅 Bookings",
+            "1200+"
+        )
+
+    with d:
+        st.metric(
+            "🏆 Coaches",
+            "15"
+        )
+
+    st.divider()
 
     st.markdown("## 🚀 Features")
 
