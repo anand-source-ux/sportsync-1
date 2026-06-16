@@ -264,49 +264,85 @@ your sports journey.
 
     st.markdown("## 🚀 Features")
 
-    c1,c2,c3,c4 = st.columns(4)
+    c1, c2, c3, c4 = st.columns(4)
 
-    st.markdown("""
-    <div style="
-    background:white;
-    padding:25px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 4px 12px rgba(46,42,104,0.12);
-    ">
-    <h3>🏀</h3>
-    <h4>Facility Booking</h4>
-    <p>Book sports facilities instantly.</p>
-    </div>
-""", unsafe_allow_html=True)
+    with c1:
+        st.markdown("""
+        <div style="
+        background:white;
+        padding:25px;
+        border-radius:20px;
+        text-align:center;
+        box-shadow:0 4px 12px rgba(46,42,104,0.12);
+        min-height:180px;
+        ">
+        <h3>🏀</h3>
+        <h4>Facility Booking</h4>
+        <p>Book courts and facilities instantly.</p>
+        </div>
+        """, unsafe_allow_html=True)
 
     with c2:
-        st.info("📈 Performance Tracking")
+        st.markdown("""
+        <div style="
+        background:#D8CCE8;
+        padding:25px;
+        border-radius:20px;
+        text-align:center;
+        box-shadow:0 4px 12px rgba(46,42,104,0.12);
+        min-height:180px;
+        ">
+        <h3>📈</h3>
+        <h4>Performance Tracking</h4>
+        <p>Monitor progress and achievements.</p>
+        </div>
+        """, unsafe_allow_html=True)
 
     with c3:
-        st.info("📱 QR Access")
+        st.markdown("""
+        <div style="
+        background:white;
+        padding:25px;
+        border-radius:20px;
+        text-align:center;
+        box-shadow:0 4px 12px rgba(46,42,104,0.12);
+        min-height:180px;
+        ">
+        <h3>📱</h3>
+        <h4>QR Access</h4>
+        <p>Generate QR codes for bookings.</p>
+        </div>
+        """, unsafe_allow_html=True)
 
     with c4:
-        st.info("👨‍🏫 Coach Insights")
+        st.markdown("""
+        <div style="
+        background:#D8CCE8;
+        padding:25px;
+        border-radius:20px;
+        text-align:center;
+        box-shadow:0 4px 12px rgba(46,42,104,0.12);
+        min-height:180px;
+        ">
+        <h3>👨‍🏫</h3>
+        <h4>Coach Insights</h4>
+        <p>Receive feedback from coaches.</p>
+        </div>
+        """, unsafe_allow_html=True)
 
-    st.markdown(
-        "<h2 style='text-align:center;'>🔥 Popular Sports</h2>",
-        unsafe_allow_html=True
-    )
     i1, i2, i3, i4 = st.columns(4)
-    
-    with i1: 
-        st.image( "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=500" )
-    
-    with i2:
-        st.image( "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=500" )
-    
-    with i3: 
-        st.image( "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=500" ) 
-    
-    with i4: 
-        st.image( "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=500" )
 
+    with i1:
+        st.image("https://images.unsplash.com/photo-1546519638-68e109498ffc?w=500")
+
+    with i2:
+        st.image("https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=500")
+
+    with i3:
+        st.image("https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=500")
+
+    with i4:
+        st.image("https://images.unsplash.com/photo-1518611012118-696072aa579a?w=500")
 
     st.markdown("## 🏆 Achievements")
 
