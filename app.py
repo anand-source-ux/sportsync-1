@@ -142,8 +142,9 @@ with nav2:
         st.session_state.page = "🔐 Login"
 
 with nav3:
-    if st.button("📅 Book Slot"):
+    if st.button("📅 Book Now"):
         st.session_state.page = "📅 Book Slot"
+        st.rerun()
 
 with nav4:
     if st.button("📈 Performance"):
@@ -172,10 +173,7 @@ if choice == "🏠 Home":
         banners[st.session_state.banner],
         use_container_width=True
     )
-    st.image(
-        banners[st.session_state.banner],
-        use_container_width=True
-    )
+
 
     st.markdown("""
     <div style="
@@ -324,22 +322,8 @@ if choice == "🏠 Home":
     with s4:
         st.success("🎾 Tennis")
 
-    st.markdown("## 📍 Facility Status")
-
-    c1, c2, c3, c4 = st.columns(4)
-
-    with c1:
-        st.success("🏀 Basketball Open")
-
-    with c2:
-        st.warning("⚽ Football Busy")
-
-    with c3:
-        st.success("🏊 Swimming Open")
-
-    with c4:
-        st.error("🏋️ Gym Nearly Full")
-        # --------------------------
+   
+ # --------------------------
 # LOGIN PAGE
 # --------------------------
 
