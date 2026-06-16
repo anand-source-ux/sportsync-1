@@ -184,15 +184,13 @@ text-align:center;
 color:white;
 box-shadow:0 10px 30px rgba(0,0,0,0.15);
 ">
-    <h1 style="
-font-size:60px;
-margin-bottom:10px;
-color:#2E2A68;
-<h1 style="
+   <h1 style="
 font-size:60px;
 margin-bottom:10px;
 color:#2E2A68;
 ">
+🚀 Welcome to SportSync
+</h1>
 
 🚀 Welcome to SportSync
 </h1>
