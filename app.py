@@ -35,11 +35,10 @@ div[data-testid="metric-container"]{
     padding:20px;
     border:1px solid #E2E8F0;
     box-shadow:0px 2px 8px rgba(0,0,0,0.08);
-}
-
+            }
 .stButton > button{
- background:#60A5FA;
-    color:white;
+    background:#CBB7E8;
+    color:#2E2A68;
     border:none;
     border-radius:15px;
     height:55px;
@@ -50,8 +49,8 @@ div[data-testid="metric-container"]{
 }
 
 .stButton > button:hover{
-   background:#3B82F6;
-
+    background:#B79DDE;
+    color:#2E2A68;
 }
 
 </style>
