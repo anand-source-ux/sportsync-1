@@ -108,16 +108,16 @@ elif choice == "📅 Book Slot":
     st.header("📅 Book Sports Facility")
 
     sports = [
-        "Basketball",
-        "Football",
-        "Cricket",
-        "Gym",
-        "Swimming",
-        "Table Tennis",
-        "Tennis",
-        "Snooker"
+        "🏀 Basketball",
+        "⚽ Football",
+        "🏏 Cricket",
+        "🏋️ Gym",
+        "🏊 Swimming",
+        "🏓 Table Tennis",
+        "🎾 Tennis",
+        "🎱 Snooker"
     ]
-
+    
     sport = st.selectbox("Select Sport", sports)
 
     booking_date = st.date_input("Date")
@@ -143,8 +143,21 @@ elif choice == "📅 Book Slot":
         ]
     )
 
-    st.info(f"Current Bookings: {slot_count}/20")
+    col1, col2 = st.columns(2)
 
+    with col1:
+        st.metric(
+            "👥 Players Registered",
+            slot_count
+        )
+
+    with col2:
+        st.metric(
+            "🎯 Available Spots",
+            20 - slot_count
+        )
+
+    st.progress(slot_count / 20)
     if slot_count >= 20:
         st.error("Slot Full!")
     else:
