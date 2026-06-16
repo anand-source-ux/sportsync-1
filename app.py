@@ -227,7 +227,8 @@ if choice == "🏠 Home":
     """, unsafe_allow_html=True)
 
     if st.button("📅 Book Now", key="hero_book"):
-        st.success("BUTTON CLICKED")
+        st.session_state.page = "📅 Book Slot"
+        st.rerun()
 
     st.markdown("## 📊 SportSync Live")
 
