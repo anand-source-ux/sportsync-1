@@ -203,12 +203,15 @@ color:#2E2A68;
 </h1>
 
 <p style="
-font-size:22px;
-color:#4B3F72;
+font-size:24px;
+font-weight:500;
+color:#3D356B;
+line-height:1.8;
+max-width:900px;
+margin:auto;
+margin-top:25px;
 ">
-Book facilities, track performance,
-receive coach insights and manage
-your sports journey.
+Train smarter. Book faster. Improve continuously.
 </p>
 
 </div>
