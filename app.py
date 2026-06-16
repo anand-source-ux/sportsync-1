@@ -343,7 +343,10 @@ your sports journey.
 
     with i4:
         st.image("https://images.unsplash.com/photo-1518611012118-696072aa579a?w=500")
-
+    st.markdown(
+        "<div style='height:40px;'></div>",
+        unsafe_allow_html=True
+    )
     st.markdown("## 🏆 Achievements")
 
     a1, a2, a3 = st.columns(3)
