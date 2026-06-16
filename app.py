@@ -404,10 +404,18 @@ Sign in to access your SportSync dashboard
 
     users = pd.read_csv("users.csv")
 
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
+    left, center, right = st.columns([1,2,1])
 
-    if st.button("Login"):
+    with center:
+
+        username = st.text_input("Username")
+
+        password = st.text_input(
+            "Password",
+            type="password"
+        )
+
+        if st.button("Login"):
 
         user = users[
             (users["Username"] == username)
