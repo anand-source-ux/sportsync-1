@@ -699,44 +699,58 @@ elif choice == "📈 Performance":
 elif choice == "ℹ️ About":
 
     st.markdown("""
-    <div style="
-    background:linear-gradient(135deg,#D8CCE8,#CBB7E8);
-    padding:50px;
-    border-radius:25px;
-    text-align:center;
-    margin-bottom:30px;
-    ">
-        <h1 style="
-        color:#1E293B;
-        font-size:52px;
-        margin-bottom:10px;
-        ">
-        🏆 About SportSync
-        </h1>
+<div style="
+background:linear-gradient(135deg,#D8CCE8,#CBB7E8);
+padding:50px;
+border-radius:25px;
+text-align:center;
+margin-bottom:30px;
+">
 
-        <p style="
-        font-size:22px;
-        color:#334155;
-        ">
-        Smart Sports Facility Management & Performance Tracking
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+<h1 style="
+color:#1E293B;
+font-size:52px;
+margin-bottom:10px;
+">
+🏆 About SportSync
+</h1>
+
+<p style="
+font-size:22px;
+color:#334155;
+">
+Smart Sports Facility Management & Performance Tracking
+</p>
+
+</div>
+""", unsafe_allow_html=True)
 
     st.markdown("### 🚀 What is SportSync?")
 
-    st.info(
-        """
-SportSync is a sports facility booking and athlete management platform.
+    st.markdown("""
+<div style="
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+">
 
-It allows students and athletes to:
-- Book sports facilities
-- Track performance records
-- Receive coach feedback
-- Access facilities through QR codes
-- Monitor sports progress over time
-        """
-    )
+<h3>🚀 What is SportSync?</h3>
+
+<p>
+SportSync is a sports facility booking and athlete management platform.
+</p>
+
+<ul>
+<li>Book sports facilities</li>
+<li>Track performance records</li>
+<li>Receive coach feedback</li>
+<li>Access facilities through QR codes</li>
+<li>Monitor sports progress over time</li>
+</ul>
+
+</div>
+""", unsafe_allow_html=True)
 
     st.markdown("### ⭐ Key Features")
 
