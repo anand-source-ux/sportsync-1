@@ -205,26 +205,6 @@ if choice == "🏠 Home":
         unsafe_allow_html=True
     )
 
-    st.markdown("""
-    <div style="
-    background:white;
-    padding:20px;
-    border-radius:15px;
-    text-align:center;
-    margin-top:20px;
-    margin-bottom:20px;
-    ">
-
-    <h2 style="color:#2B2D6E;">
-    🚀 Start Your Sports Journey
-    </h2>
-
-    <p>
-    Book facilities, track progress, and improve with coach feedback.
-    </p>
-
-    </div>
-    """, unsafe_allow_html=True)
 
     col1, col2, col3 = st.columns([2,1,2])
 
