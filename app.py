@@ -258,19 +258,40 @@ if choice == "🏠 Home":
 
     with c4:
         st.info("👨‍🏫 Coach Insights")
-        st.markdown("## 🔥 Popular Sports") 
-        i1, i2, i3, i4 = st.columns(4)
-        with i1: 
-            st.image( "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=500" )
-            with i2:
-                 st.image( "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=500" )
-                 with i3: st.image( "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=500" ) 
-                 with i4: st.image( "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=500" )
-                 s1, s2, s3, s4 = st.columns(4)
-                 with s1: st.button("🏀 Basketball", use_container_width=True)
-                 with s2: st.success("⚽ Football") 
-                 with s3: st.success("🏏 Cricket")
-                 with s4: st.success("🎾 Tennis")
+
+    st.markdown(
+        "<h2 style='text-align:center;'>🔥 Popular Sports</h2>",
+        unsafe_allow_html=True
+    )
+    i1, i2, i3, i4 = st.columns(4)
+    
+    with i1: 
+        st.image( "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=500" )
+    
+    with i2:
+        st.image( "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=500" )
+    
+    with i3: 
+        st.image( "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=500" ) 
+    
+    with i4: 
+        st.image( "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=500" )
+
+    st.markdown("## 🏆 Popular Sports")
+    sports1, sports2, sports3, sports4 = st.columns(4)
+
+    with sports1:
+        st.info("🏀 Basketball")
+
+    with sports2:
+        st.info("⚽ Football")
+
+    with sports3:
+        st.info("🏏 Cricket")
+
+    with sports4:
+        st.info("🎾 Tennis")
+
     st.markdown("## 🏆 Achievements")
 
     a1, a2, a3 = st.columns(3)
