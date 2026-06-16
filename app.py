@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import uuid
-import qrcode
 import os
 
 # --------------------------
