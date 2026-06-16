@@ -78,22 +78,76 @@ Book facilities, monitor progress, and level up your game.
 # Login Page
 # ---------------------------
 
-with st.sidebar:
+# ---------------------------
+# Top Navbar
+# ---------------------------
 
-    st.markdown("## 🏆 SportSync")
+col1, col2 = st.columns([5,1])
 
-    choice = st.selectbox(
-        "Navigate",
-        [
-            "🔐 Login",
-            "📅 Book Slot",
-            "📈 Track Performance"
-        ]
+with col1:
+    st.markdown(
+        "<h2 style='color:#00C896;'>🏆 SportSync</h2>",
+        unsafe_allow_html=True
     )
+
+with col2:
+    if st.session_state.get("logged_in", False):
+        st.write(f"👤 {st.session_state.username}")
+
+st.divider()
+
+choice = st.radio(
+    "",
+    [
+        "🏠 Home",
+        "🔐 Login",
+        "📅 Book Slot",
+        "📈 Performance",
+        "ℹ️ About"
+    ],
+    horizontal=True
+)
+
+st.divider()
 
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
+if choice == "🏠 Home":
 
+    st.markdown("""
+    <div style='text-align:center;padding:20px;'>
+
+    <h1>🏆 Welcome to SportSync</h1>
+
+    <h3>Train • Track • Triumph</h3>
+
+    <p>
+    Book sports facilities, track performance and improve with coach insights.
+    </p>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.image(
+        "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1600",
+        use_container_width=True
+    )
+
+    st.markdown("## 🚀 Features")
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    with col1:
+        st.success("🏀 Facility Booking")
+
+    with col2:
+        st.success("📈 Performance Tracking")
+
+    with col3:
+        st.success("📱 QR Access")
+
+    with col4:
+        st.success("👨‍🏫 Coach Insights")
 if choice == "🔐 Login":
 
     st.header("Login Portal")
@@ -241,7 +295,7 @@ elif choice == "📅 Book Slot":
 # Track Performance
 # ---------------------------
 
-elif choice == "📈 Track Performance":
+elif choice == "📈 Performance":
 
     if not st.session_state.logged_in:
         st.warning("Please login first")
@@ -302,7 +356,25 @@ elif choice == "📈 Track Performance":
 
         else:
             st.error("Invalid Booking Code")
+elif choice == "ℹ️ About":
 
+    st.header("🏆 About SportSync")
+
+    st.write("""
+    SportSync is a university sports management platform.
+
+    Features:
+
+    • Sports Facility Booking
+
+    • QR Code Access
+
+    • Performance Tracking
+
+    • Coach Feedback
+
+    • Real-time Slot Availability
+    """)
 # ---------------------------
 # Dashboard
 # ---------------------------
