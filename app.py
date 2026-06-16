@@ -177,16 +177,21 @@ if choice == "🏠 Home":
 
     st.markdown("""
     <div style="
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    text-align:center;
-    margin-top:20px;
-    ">
+background:linear-gradient(135deg,#6D5BD0,#8E7CF7);
+padding:60px;
+border-radius:30px;
+text-align:center;
+color:white;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+">
+    <h1 style="font-size:60px;margin-bottom:10px;">
+🚀 Welcome to SportSync
+</h1>
+                
 
-    <h2>🚀 Welcome to SportSync</h2>
 
     <p>
+                <p style="font-size:22px;">
     Book facilities, track performance,
     receive coach insights and manage
     your sports journey.
