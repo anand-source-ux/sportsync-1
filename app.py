@@ -54,7 +54,12 @@ div[data-testid="metric-container"]{
     color:#2E2A68;
     transform:translateY(-3px);
 }
-
+div[data-testid="metric-container"] {
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 4px 12px rgba(46,42,104,0.08);
+}
 </style>
 """, unsafe_allow_html=True)
 
