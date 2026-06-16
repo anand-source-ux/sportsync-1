@@ -2,46 +2,56 @@ import streamlit as st
 import pandas as pd
 import uuid
 import qrcode
-from PIL import Image
 import os
+from PIL import Image
+
+# -----------------------------
+# PAGE CONFIG
+# -----------------------------
 
 st.set_page_config(
     page_title="SportSync",
     page_icon="🏆",
     layout="wide"
 )
+
+# -----------------------------
+# CUSTOM STYLING
+# -----------------------------
+
 st.markdown("""
 <style>
-body {
-    background-color: #F8FAFC;
+
+.stApp {
+    background-color: #DFC4DA;
 }
 
-.main {
-    background-color: #F8FAFC;
-}
-div[data-testid="metric-container"] {
-    background-color: white;
-    border: 1px solid #E5E7EB;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+h1,h2,h3,h4,h5,h6,p,label {
+    color:#2B2D6E !important;
 }
 
-.stButton > button {
-    background-color:#5B5FAD;
+div[data-testid="metric-container"]{
+    background:white;
+    border-radius:15px;
+    padding:15px;
+    box-shadow:0px 4px 12px rgba(0,0,0,0.15);
+}
+
+.stButton > button{
+    background-color:#6667AB;
     color:white;
     border:none;
-    border-radius:12px;
+    border-radius:10px;
     height:50px;
     font-weight:bold;
-    width:100%;
 }
 
 </style>
 """, unsafe_allow_html=True)
-# ---------------------------
-# Initialize Files
-# ---------------------------
+
+# -----------------------------
+# FILES
+# -----------------------------
 
 if not os.path.exists("bookings.csv"):
     pd.DataFrame(columns=[
@@ -61,47 +71,44 @@ if not os.path.exists("performance.csv"):
         "CoachInsights"
     ]).to_csv("performance.csv", index=False)
 
-# ---------------------------
-# App Title
-# ---------------------------
+if not os.path.exists("users.csv"):
+    pd.DataFrame(columns=[
+        "Username",
+        "Password",
+        "Role"
+    ]).to_csv("users.csv", index=False)
 
-st.markdown("""
-<div style='text-align:center;padding:20px;'>
+# -----------------------------
+# SESSION STATE
+# -----------------------------
 
-<h1 style='color:#00C896;'>
-🏆 SportSync
-</h1>
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
 
-<h3>
-Train • Track • Triumph
-</h3>
+if "username" not in st.session_state:
+    st.session_state.username = ""
 
-<p>
-Book facilities, monitor progress, and level up your game.
-</p>
+if "role" not in st.session_state:
+    st.session_state.role = ""
 
-</div>
-""", unsafe_allow_html=True)
+if "banner" not in st.session_state:
+    st.session_state.banner = 0
 
-# ---------------------------
-# Login Page
-# ---------------------------
+# -----------------------------
+# NAVBAR
+# -----------------------------
 
-# ---------------------------
-# Top Navbar
-# ---------------------------
-
-col1, col2 = st.columns([5,1])
+col1, col2 = st.columns([6,1])
 
 with col1:
     st.markdown(
-        "<h2 style='color:#2B2D6E;'>🏆 SportSync</h2>",
+        "<h1 style='color:#2B2D6E;'>🏆 SportSync</h1>",
         unsafe_allow_html=True
     )
 
 with col2:
-    if st.session_state.get("logged_in", False):
-        st.write(f"👤 {st.session_state.username}")
+    if st.session_state.logged_in:
+        st.success(st.session_state.username)
 
 st.divider()
 
@@ -114,105 +121,173 @@ choice = st.radio(
         "📈 Performance",
         "ℹ️ About"
     ],
-    horizontal=True
+    horizontal=True,
+    label_visibility="collapsed"
 )
 
 st.divider()
 
-if "logged_in" not in st.session_state:
-    st.session_state.logged_in = False
+# -----------------------------
+# HOME PAGE
+# -----------------------------
+
 if choice == "🏠 Home":
 
-    st.markdown("""
-    <div style='text-align:center;padding:20px;'>
+    banners = [
+        "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1600",
+        "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1600",
+        "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=1600",
+        "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1600"
+    ]
 
-    <h1>🏆 Welcome to SportSync</h1>
+    b1, b2 = st.columns([1,1])
 
-    <h3>Train • Track • Triumph</h3>
+    with b1:
+        if st.button("⬅️ Previous"):
+            st.session_state.banner = (
+                st.session_state.banner - 1
+            ) % len(banners)
 
-    <p>
-    Book sports facilities, track performance and improve with coach insights.
-    </p>
-
-    </div>
-    """, unsafe_allow_html=True)
+    with b2:
+        if st.button("Next ➡️"):
+            st.session_state.banner = (
+                st.session_state.banner + 1
+            ) % len(banners)
 
     st.image(
-        "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1600",
+        banners[st.session_state.banner],
         use_container_width=True
     )
 
+    st.markdown(
+        """
+        <div style='text-align:center;padding:20px;'>
+
+        <h1>Train • Track • Triumph</h1>
+
+        <h3>
+        Book facilities instantly and
+        improve with coach insights.
+        </h3>
+
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    st.button("📅 Book Now")
+
     st.markdown("## 🚀 Features")
 
-    col1, col2, col3, col4 = st.columns(4)
+    c1, c2, c3, c4 = st.columns(4)
 
-    with col1:
+    with c1:
         st.success("🏀 Facility Booking")
 
-    with col2:
+    with c2:
         st.success("📈 Performance Tracking")
 
-    with col3:
+    with c3:
         st.success("📱 QR Access")
 
-    with col4:
+    with c4:
         st.success("👨‍🏫 Coach Insights")
-if choice == "🔐 Login":
 
-    st.header("Login Portal")
+    st.markdown("## 🔥 Popular Sports")
 
-    role = st.selectbox(
-        "Choose Portal",
-        ["Student", "Coach"]
-    )
+    s1, s2, s3, s4 = st.columns(4)
+
+    with s1:
+        st.metric("🏀 Basketball", "Available")
+
+    with s2:
+        st.metric("⚽ Football", "Available")
+
+    with s3:
+        st.metric("🏏 Cricket", "Available")
+
+    with s4:
+        st.metric("🎾 Tennis", "Available")
+
+        # -----------------------------
+# LOGIN
+# -----------------------------
+
+elif choice == "🔐 Login":
+
+    st.header("🔐 Login Portal")
+
+    users = pd.read_csv("users.csv")
 
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
 
     if st.button("Login"):
-        if username and password:
+
+        user = users[
+            (users["Username"] == username)
+            & (users["Password"].astype(str) == str(password))
+        ]
+
+        if len(user) > 0:
+
             st.session_state.logged_in = True
             st.session_state.username = username
-            st.session_state.role = role
-            st.success(f"Welcome {username}!")
-        else:
-            st.error("Enter username and password")
+            st.session_state.role = user.iloc[0]["Role"]
 
-# ---------------------------
-# Book Slot
-# ---------------------------
+            st.success(f"Welcome {username}!")
+
+        else:
+            st.error("Invalid credentials")
+
+# -----------------------------
+# BOOK SLOT
+# -----------------------------
 
 elif choice == "📅 Book Slot":
-    st.header("📊 Dashboard")
-    if "username" in st.session_state:
-        st.success(
-            f"🔥 Welcome back, {st.session_state.username}! Ready to train today?"
-        )
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            st.metric(
-                "🏆 Total Bookings",
-                len(pd.read_csv("bookings.csv"))
-            )
 
-        with col2:
-            st.metric(
-                "👤 Active User",
-                st.session_state.username
-            )
-
-        with col3:
-            st.metric(
-                "🎯 Sports Available",
-                8
-            )
-
-    st.markdown("---")
     if not st.session_state.logged_in:
         st.warning("Please login first")
         st.stop()
 
-    st.header("📅 Book Sports Facility")
+    bookings = pd.read_csv("bookings.csv")
+    performance = pd.read_csv("performance.csv")
+
+    st.header("📊 Dashboard")
+
+    d1, d2, d3, d4, d5 = st.columns(5)
+
+    with d1:
+        st.metric(
+            "Bookings",
+            len(bookings)
+        )
+
+    with d2:
+        st.metric(
+            "Performance Records",
+            len(performance)
+        )
+
+    with d3:
+        st.metric(
+            "Active User",
+            st.session_state.username
+        )
+
+    with d4:
+        st.metric(
+            "Sports Available",
+            8
+        )
+
+    with d5:
+        st.metric(
+            "QR Codes Generated",
+            len(bookings)
+        )
+
+    st.divider()
 
     sports = [
         "🏀 Basketball",
@@ -224,10 +299,17 @@ elif choice == "📅 Book Slot":
         "🎾 Tennis",
         "🎱 Snooker"
     ]
-    
-    sport = st.selectbox("Select Sport", sports)
 
-    booking_date = st.date_input("Date")
+    st.subheader("📅 Book Facility")
+
+    sport = st.selectbox(
+        "Sport",
+        sports
+    )
+
+    booking_date = st.date_input(
+        "Booking Date"
+    )
 
     slot = st.selectbox(
         "Time Slot",
@@ -240,35 +322,39 @@ elif choice == "📅 Book Slot":
         ]
     )
 
-    bookings = pd.read_csv("bookings.csv")
-
     slot_count = len(
         bookings[
             (bookings["Sport"] == sport)
-            & (bookings["Date"] == str(booking_date))
-            & (bookings["Slot"] == slot)
+            &
+            (bookings["Date"] == str(booking_date))
+            &
+            (bookings["Slot"] == slot)
         ]
     )
 
-    col1, col2 = st.columns(2)
+    c1, c2 = st.columns(2)
 
-    with col1:
+    with c1:
         st.metric(
-            "👥 Players Registered",
+            "Players Registered",
             slot_count
         )
 
-    with col2:
+    with c2:
         st.metric(
-            "🎯 Available Spots",
+            "Available Spots",
             20 - slot_count
         )
 
     st.progress(slot_count / 20)
+
     if slot_count >= 20:
-        st.error("Slot Full!")
+
+        st.error("🚫 Slot Full")
+
     else:
-        if st.button("Book Slot"):
+
+        if st.button("Confirm Booking"):
 
             booking_code = str(uuid.uuid4())[:8]
 
@@ -286,23 +372,43 @@ elif choice == "📅 Book Slot":
                 ignore_index=True
             )
 
-            bookings.to_csv("bookings.csv", index=False)
+            bookings.to_csv(
+                "bookings.csv",
+                index=False
+            )
 
-            # QR Code Generation
             qr = qrcode.make(booking_code)
+
             qr_file = f"{booking_code}.png"
+
             qr.save(qr_file)
 
-            st.success("Booking Successful!")
+            st.balloons()
 
-            st.write("Booking Code:")
+            st.success(
+                "🎉 Booking Successful!"
+            )
+
             st.code(booking_code)
 
-            st.image(qr_file, width=200)
+            st.image(
+                qr_file,
+                width=250
+            )
 
-# ---------------------------
-# Track Performance
-# ---------------------------
+    if st.session_state.role == "Coach":
+
+        st.divider()
+
+        st.subheader(
+            "👨‍🏫 Coach Dashboard"
+        )
+
+        st.dataframe(bookings)
+
+# -----------------------------
+# PERFORMANCE
+# -----------------------------
 
 elif choice == "📈 Performance":
 
@@ -312,33 +418,40 @@ elif choice == "📈 Performance":
 
     st.header("📈 Performance Tracker")
 
-    booking_code = st.text_input("Enter Booking Code")
+    booking_code = st.text_input(
+        "Booking Code"
+    )
 
-    bookings = pd.read_csv("bookings.csv")
+    bookings = pd.read_csv(
+        "bookings.csv"
+    )
 
     if booking_code:
 
         booking_match = bookings[
-            bookings["BookingCode"] == booking_code
+            bookings["BookingCode"]
+            == booking_code
         ]
 
         if len(booking_match) > 0:
 
             sport = booking_match.iloc[0]["Sport"]
 
-            st.success(f"Sport: {sport}")
+            st.success(
+                f"Sport: {sport}"
+            )
 
-            performance = st.text_area(
-                "Performance Data",
-                placeholder="Goals scored, laps completed, gym weights, etc."
+            performance_data = st.text_area(
+                "Performance Data"
             )
 
             coach_insight = st.text_area(
-                "Coach Insights",
-                placeholder="Coach feedback"
+                "Coach Insights"
             )
 
-            if st.button("Save Performance"):
+            if st.button(
+                "Save Performance"
+            ):
 
                 performance_df = pd.read_csv(
                     "performance.csv"
@@ -347,7 +460,7 @@ elif choice == "📈 Performance":
                 new_record = pd.DataFrame({
                     "BookingCode":[booking_code],
                     "Sport":[sport],
-                    "PerformanceData":[performance],
+                    "PerformanceData":[performance_data],
                     "CoachInsights":[coach_insight]
                 })
 
@@ -361,36 +474,53 @@ elif choice == "📈 Performance":
                     index=False
                 )
 
-                st.success("Performance Saved!")
+                st.success(
+                    "Performance Saved"
+                )
+
+            if st.session_state.role == "Coach":
+
+                st.subheader(
+                    "All Performance Records"
+                )
+
+                st.dataframe(
+                    pd.read_csv(
+                        "performance.csv"
+                    )
+                )
 
         else:
-            st.error("Invalid Booking Code")
+
+            st.error(
+                "Invalid Booking Code"
+            )
+
+# -----------------------------
+# ABOUT
+# -----------------------------
+
 elif choice == "ℹ️ About":
 
     st.header("🏆 About SportSync")
 
     st.write("""
-    SportSync is a university sports management platform.
+SportSync is a university sports
+facility management platform.
 
-    Features:
+Features:
 
-    • Sports Facility Booking
+• Facility Booking
 
-    • QR Code Access
+• QR Code Generation
 
-    • Performance Tracking
+• Performance Tracking
 
-    • Coach Feedback
+• Coach Feedback
 
-    • Real-time Slot Availability
-    """)
-# ---------------------------
-# Dashboard
-# ---------------------------
+• Slot Management
 
-if st.session_state.logged_in:
+• Student & Coach Portals
 
-    st.sidebar.markdown("---")
-    st.sidebar.write(
-        f"Logged in as: {st.session_state.username}"
-    )
+• Real-Time Capacity Tracking
+""")
