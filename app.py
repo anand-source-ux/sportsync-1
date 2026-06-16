@@ -121,28 +121,28 @@ if choice == "🔐 Login":
 
 elif choice == "📅 Book Slot":
     st.header("📊 Dashboard")
-    st.success(
-        f"🔥 Welcome back, {st.session_state.username}! Ready to train today?"
-    )
-    col1, col2, col3 = st.columns(3)
-
-    with col1:
-        st.metric(
-            "🏆 Total Bookings",
-            len(pd.read_csv("bookings.csv"))
+    if "username" in st.session_state:
+        st.success(
+            f"🔥 Welcome back, {st.session_state.username}! Ready to train today?"
         )
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric(
+                "🏆 Total Bookings",
+                len(pd.read_csv("bookings.csv"))
+            )
 
-    with col2:
-        st.metric(
-            "👤 Active User",
-            st.session_state.username
-        )
+        with col2:
+            st.metric(
+                "👤 Active User",
+                st.session_state.username
+            )
 
-    with col3:
-        st.metric(
-            "🎯 Sports Available",
-            8
-        )
+        with col3:
+            st.metric(
+                "🎯 Sports Available",
+                8
+            )
 
     st.markdown("---")
     if not st.session_state.logged_in:
