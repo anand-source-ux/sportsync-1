@@ -199,6 +199,22 @@ if choice == "🏠 Home":
 
     with c4:
         st.info("👨‍🏫 Coach Insights")
+
+    st.markdown("## 🔥 Popular Sports")
+
+    s1, s2, s3, s4 = st.columns(4)
+
+    with s1:
+        st.success("🏀 Basketball")
+
+    with s2:
+        st.success("⚽ Football")
+
+    with s3:
+        st.success("🏏 Cricket")
+
+    with s4:
+        st.success("🎾 Tennis")
         # --------------------------
 # LOGIN PAGE
 # --------------------------
