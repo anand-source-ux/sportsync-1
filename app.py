@@ -38,7 +38,7 @@ div[data-testid="metric-container"]{
 }
 
 .stButton > button{
-   background:#2563EB;
+ background:#60A5FA;
     color:white;
     border:none;
     border-radius:15px;
@@ -50,7 +50,7 @@ div[data-testid="metric-container"]{
 }
 
 .stButton > button:hover{
-   background:#1D4ED8;
+   background:#3B82F6;
 
 }
 
@@ -94,25 +94,40 @@ if "role" not in st.session_state:
 
 if "banner" not in st.session_state:
     st.session_state.banner = 0
+import time
 
+st.session_state.banner = (
+    st.session_state.banner + 1
+) % 4
 # --------------------------
 # NAVBAR
 # --------------------------
 
-col1, col2 = st.columns([6,1])
+st.markdown("""
+<div style='text-align:center;padding:40px;'>
 
-with col1:
-    st.title("🏆 SportSync")
+<h1 style='font-size:90px;color:#1E293B;margin-bottom:0;'>
+🏆 SportSync
+</h1>
 
-with col2:
-    if st.session_state.logged_in:
-        st.success(st.session_state.username)
-        if st.button("🚪 Logout"):
-            st.session_state.logged_in = False
-            st.session_state.username = ""
-            st.session_state.role = ""
-            st.rerun()
+<h3 style='color:#475569;'>
+Train • Track • Triumph
+</h3>
 
+</div>
+""", unsafe_allow_html=True)
+
+if st.session_state.logged_in:
+    st.success(
+        f"Logged in as: {st.session_state.username}"
+    )
+
+    if st.button("🚪 Logout"):
+        st.session_state.logged_in = False
+        st.session_state.username = ""
+        st.session_state.role = ""
+        st.rerun()
+        
 nav1, nav2, nav3, nav4, nav5 = st.columns(5)
 
 if "page" not in st.session_state:
@@ -157,20 +172,30 @@ if choice == "🏠 Home":
         banners[st.session_state.banner],
         use_container_width=True
     )
+    st.image(
+        banners[st.session_state.banner],
+        use_container_width=True
+    )
 
-    a,b = st.columns(2)
+    st.markdown("""
+    <div style="
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    margin-top:20px;
+    ">
 
-    with a:
-        if st.button("⬅️ Previous"):
-            st.session_state.banner = (
-                st.session_state.banner - 1
-            ) % len(banners)
+    <h2>🚀 Welcome to SportSync</h2>
 
-    with b:
-        if st.button("Next ➡️"):
-            st.session_state.banner = (
-                st.session_state.banner + 1
-            ) % len(banners)
+    <p>
+    Book facilities, track performance,
+    receive coach insights and manage
+    your sports journey.
+    </p>
+
+    </div>
+    """, unsafe_allow_html=True)
 
     st.markdown(
         "<h1 style='text-align:center;'>Train • Track • Triumph</h1>",
