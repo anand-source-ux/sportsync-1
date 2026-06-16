@@ -46,11 +46,13 @@ div[data-testid="metric-container"]{
     font-weight:bold;
     font-size:16px;
     transition:0.3s;
+            box-shadow:0 4px 12px rgba(46,42,104,0.15);
 }
 
 .stButton > button:hover{
     background:#B79DDE;
     color:#2E2A68;
+    transform:translateY(-3px);
 }
 
 </style>
@@ -203,7 +205,7 @@ your sports journey.
 """, unsafe_allow_html=True)
 
     st.markdown(
-        "<h1 style='text-align:center;'>Train • Track • Triumph</h1>",
+        "<h1 style='text-align:center;margin-top:20px;'>Train • Track • Triumph</h1>",
         unsafe_allow_html=True
     )
 
