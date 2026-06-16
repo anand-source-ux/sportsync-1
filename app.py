@@ -226,9 +226,12 @@ if choice == "🏠 Home":
     </div>
     """, unsafe_allow_html=True)
 
-    if st.button("📅 Book Now", key="hero_book"):
-        st.session_state.page = "📅 Book Slot"
-        st.rerun()
+    col1, col2, col3 = st.columns([2,1,2])
+
+    with col2:
+        if st.button("📅 Book Now", key="hero_book"):
+            st.session_state.page = "📅 Book Slot"
+            st.rerun()
 
     st.markdown("## 📊 SportSync Live")
 
