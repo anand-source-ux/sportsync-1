@@ -37,11 +37,20 @@ div[data-testid="metric-container"]{
 }
 
 .stButton > button{
-    background-color:#6667AB;
+    background:#6667AB;
     color:white;
     border:none;
-    border-radius:10px;
+    border-radius:15px;
+    height:55px;
+    width:100%;
     font-weight:bold;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.stButton > button:hover{
+    background:#4F519B;
+
 }
 
 </style>
