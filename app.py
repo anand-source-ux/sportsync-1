@@ -565,28 +565,16 @@ Keep booking, training and improving.
                 index=False
             )
 
-            qr = qrcode.make(
-                booking_code
-            )
-
-            qr_file = f"{booking_code}.png"
-
-            qr.save(qr_file)
+    
 
             st.balloons()
 
-            st.success(
-                "Booking Successful!"
-            )
+            st.success("✅ Booking Confirmed!")
 
-            st.code(
-                booking_code
-            )
+            st.info(f"Booking Code: {booking_code}")
+            st.code(booking_code)
 
-            st.image(
-                qr_file,
-                width=250
-            )
+        
     else:
         st.warning("This slot is full. Please select a different time or date.")
 
