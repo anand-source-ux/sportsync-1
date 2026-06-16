@@ -95,19 +95,12 @@ with col1:
     st.title("🏆 SportSync")
 
 with col2:
-
     if st.session_state.logged_in:
-
-        st.success(
-            st.session_state.username
-        )
-
-        if st.button("Logout"):
-
+        st.success(st.session_state.username)
+        if st.button("🚪 Logout"):
             st.session_state.logged_in = False
             st.session_state.username = ""
             st.session_state.role = ""
-
             st.rerun()
 
 choice = st.radio(
@@ -165,10 +158,28 @@ if choice == "🏠 Home":
         unsafe_allow_html=True
     )
 
+    st.markdown("""
+    <div style="
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    margin-top:20px;
+    margin-bottom:20px;
+    ">
+
+    <h2 style="color:#2B2D6E;">
+    🚀 Start Your Sports Journey
+    </h2>
+
+    <p>
+    Book facilities, track progress, and improve with coach feedback.
+    </p>
+
+    </div>
+    """, unsafe_allow_html=True)
+
     st.button("📅 Book Now")
-    search = st.text_input(
-    "🔍 Search Sports Facilities"
-)
     st.markdown("## 📊 SportSync Live")
 
     a, b, c, d = st.columns(4)
@@ -263,6 +274,22 @@ if choice == "🏠 Home":
 
     with s4:
         st.success("🎾 Tennis")
+
+    st.markdown("## 📍 Facility Status")
+
+    c1, c2, c3, c4 = st.columns(4)
+
+    with c1:
+        st.success("🏀 Basketball Open")
+
+    with c2:
+        st.warning("⚽ Football Busy")
+
+    with c3:
+        st.success("🏊 Swimming Open")
+
+    with c4:
+        st.error("🏋️ Gym Nearly Full")
         # --------------------------
 # LOGIN PAGE
 # --------------------------
@@ -313,6 +340,11 @@ elif choice == "📅 Book Slot":
     st.success(
         f"Welcome back, {st.session_state.username} 👋"
     )
+    st.markdown("""
+### 🎯 Today's Activity
+
+Keep booking, training and improving.
+""")
     d1, d2, d3, d4, d5 = st.columns(5)
 
     with d1:
@@ -466,6 +498,16 @@ elif choice == "📅 Book Slot":
         ]
 
         st.dataframe(user_bookings)
+        st.divider()
+
+    st.subheader("📋 Recent Bookings")
+
+    recent = bookings.tail(5)
+
+    st.dataframe(
+        recent,
+        use_container_width=True
+)
 # --------------------------
 # PERFORMANCE
 # --------------------------
