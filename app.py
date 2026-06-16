@@ -5,6 +5,11 @@ import qrcode
 from PIL import Image
 import os
 
+st.set_page_config(
+    page_title="SportSync",
+    page_icon="🏆",
+    layout="wide"
+)
 # ---------------------------
 # Initialize Files
 # ---------------------------
@@ -31,20 +36,45 @@ if not os.path.exists("performance.csv"):
 # App Title
 # ---------------------------
 
-st.title("🏆 SportSync")
-st.subheader("Sports Facility Booking & Performance Tracking")
+st.markdown("""
+<div style='text-align:center;padding:20px;'>
+
+<h1 style='color:#00C896;'>
+🏆 SportSync
+</h1>
+
+<h3>
+Train • Track • Triumph
+</h3>
+
+<p>
+Book facilities, monitor progress, and level up your game.
+</p>
+
+</div>
+""", unsafe_allow_html=True)
 
 # ---------------------------
 # Login Page
 # ---------------------------
 
-menu = ["Login", "Book Slot", "Track Performance"]
-choice = st.sidebar.selectbox("Navigation", menu)
+with st.sidebar:
+
+    st.markdown("## 🏆 SportSync")
+
+    choice = st.selectbox(
+        "Navigate",
+        [
+            "🔐 Login",
+            "📅 Book Slot",
+            "📈 Track Performance"
+        ]
+    )
 
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
-if choice == "Login":
+if choice == "🔐 Login":
 
     st.header("Login Portal")
 
@@ -69,7 +99,7 @@ if choice == "Login":
 # Book Slot
 # ---------------------------
 
-elif choice == "Book Slot":
+elif choice == "📅 Book Slot":
 
     if not st.session_state.logged_in:
         st.warning("Please login first")
@@ -154,7 +184,7 @@ elif choice == "Book Slot":
 # Track Performance
 # ---------------------------
 
-elif choice == "Track Performance":
+elif choice == "📈 Track Performance":
 
     if not st.session_state.logged_in:
         st.warning("Please login first")
