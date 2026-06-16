@@ -226,7 +226,9 @@ if choice == "🏠 Home":
     </div>
     """, unsafe_allow_html=True)
 
-    st.button("📅 Book Now", key="book2")
+    if st.button("📅 Book Now", key="hero_book"):
+        st.success("BUTTON CLICKED")
+
     st.markdown("## 📊 SportSync Live")
 
     a, b, c, d = st.columns(4)
