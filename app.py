@@ -10,6 +10,26 @@ st.set_page_config(
     page_icon="🏆",
     layout="wide"
 )
+st.markdown("""
+<style>
+
+div[data-testid="metric-container"] {
+    background-color: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+}
+
+.stButton > button {
+    width: 100%;
+    border-radius: 10px;
+    height: 50px;
+    font-weight: bold;
+}
+
+</style>
+""", unsafe_allow_html=True)
 # ---------------------------
 # Initialize Files
 # ---------------------------
@@ -101,7 +121,9 @@ if choice == "🔐 Login":
 
 elif choice == "📅 Book Slot":
     st.header("📊 Dashboard")
-
+    st.success(
+        f"🔥 Welcome back, {st.session_state.username}! Ready to train today?"
+    )
     col1, col2, col3 = st.columns(3)
 
     with col1:
