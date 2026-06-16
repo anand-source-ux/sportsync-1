@@ -384,7 +384,23 @@ Train smarter. Book faster. Improve continuously.
 
 elif choice == "🔐 Login":
 
-    st.header("🔐 Login Portal")
+    st.markdown("""
+<div style="
+background:white;
+padding:40px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 6px 20px rgba(0,0,0,0.08);
+margin-bottom:30px;
+">
+<h1 style="color:#2E2A68;">
+🔐 Welcome Back
+</h1>
+<p style="font-size:20px;color:#666;">
+Sign in to access your SportSync dashboard
+</p>
+</div>
+""", unsafe_allow_html=True)
 
     users = pd.read_csv("users.csv")
 
