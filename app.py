@@ -142,9 +142,9 @@ with nav2:
         st.session_state.page = "🔐 Login"
 
 with nav3:
-    if st.button("📅 Book Now"):
-        st.session_state.page = "📅 Book Slot"
-        st.rerun()
+   if st.button("📅 Book Now", key="home_book"):
+    st.session_state.page = "📅 Book Slot"
+    st.rerun()
 
 with nav4:
     if st.button("📈 Performance"):
@@ -226,7 +226,7 @@ if choice == "🏠 Home":
     </div>
     """, unsafe_allow_html=True)
 
-    st.button("📅 Book Now")
+    st.button("📅 Book Now", key="book2")
     st.markdown("## 📊 SportSync Live")
 
     a, b, c, d = st.columns(4)
