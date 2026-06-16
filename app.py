@@ -22,22 +22,23 @@ st.markdown("""
 <style>
 
 .stApp {
-    background-color: #DFC4DA;
+    background-color: #F1F5F9;
 }
 
 h1,h2,h3,h4,h5,h6,p,label {
-    color:#2B2D6E !important;
+    color:#1E293B !important;
 }
 
 div[data-testid="metric-container"]{
     background:white;
-    border-radius:15px;
-    padding:15px;
-    box-shadow:0px 4px 10px rgba(0,0,0,0.1);
+    border-radius:20px;
+    padding:20px;
+    border:1px solid #E2E8F0;
+    box-shadow:0px 2px 8px rgba(0,0,0,0.08);
 }
 
 .stButton > button{
-    background:#6667AB;
+   background:#2563EB;
     color:white;
     border:none;
     border-radius:15px;
@@ -49,7 +50,7 @@ div[data-testid="metric-container"]{
 }
 
 .stButton > button:hover{
-    background:#4F519B;
+   background:#1D4ED8;
 
 }
 
