@@ -59,6 +59,11 @@ div[data-testid="metric-container"] {
     border-radius:20px;
     padding:20px;
     box-shadow:0 4px 12px rgba(46,42,104,0.08);
+    
+}
+            div[data-testid="metric-container"]:hover {
+    transform: translateY(-5px);
+    transition: 0.3s;
 }
 </style>
 """, unsafe_allow_html=True)
