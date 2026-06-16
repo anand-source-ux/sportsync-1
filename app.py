@@ -417,25 +417,26 @@ Sign in to access your SportSync dashboard
 
         if st.button("Login"):
 
-        user = users[
-            (users["Username"] == username)
-            &
-            (users["Password"].astype(str) == str(password))
-        ]
+            user = users[
+                (users["Username"] == username)
+                &
+                (users["Password"].astype(str) == str(password))
+            ]
 
-        if len(user) > 0:
+            if len(user) > 0:
 
-            st.session_state.logged_in = True
-            st.session_state.username = username
-            st.session_state.role = user.iloc[0]["Role"]
+                st.session_state.logged_in = True
+                st.session_state.username = username
+                st.session_state.role = user.iloc[0]["Role"]
 
-            st.success(
-                f"Welcome {username}!"
-            )
+                st.success(
+                    f"Welcome {username}!"
+                )
 
-        else:
-            st.error("Invalid Username or Password")
-
+            else:
+                st.error(
+                    "Invalid Username or Password"
+                )
 # --------------------------
 # BOOK SLOT
 # --------------------------
