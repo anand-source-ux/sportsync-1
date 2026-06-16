@@ -455,3 +455,110 @@ elif choice == "📅 Book Slot":
         st.dataframe(
             bookings
         )
+
+        st.divider()
+
+        st.subheader("📜 My Booking History")
+
+        user_bookings = bookings[
+            bookings["Username"] ==
+            st.session_state.username
+        ]
+
+        st.dataframe(user_bookings)
+# --------------------------
+# PERFORMANCE
+# --------------------------
+
+elif choice == "📈 Performance":
+
+    if not st.session_state.logged_in:
+        st.warning("Please login first")
+        st.stop()
+
+    st.header("📈 Performance Tracker")
+
+    performance_df = pd.read_csv(
+        "performance.csv"
+    )
+
+    st.metric(
+        "Total Records",
+        len(performance_df)
+    )
+
+    st.divider()
+
+    booking_code = st.text_input(
+        "Booking Code"
+    )
+
+    if booking_code:
+
+        performance_data = st.text_area(
+            "Performance Data"
+        )
+
+        coach_insight = st.text_area(
+            "Coach Insights"
+        )
+
+        if st.button(
+            "Save Performance"
+        ):
+
+            new_record = pd.DataFrame({
+                "BookingCode":[booking_code],
+                "Sport":["General"],
+                "PerformanceData":[performance_data],
+                "CoachInsights":[coach_insight]
+            })
+
+            performance_df = pd.concat(
+                [performance_df, new_record],
+                ignore_index=True
+            )
+
+            performance_df.to_csv(
+                "performance.csv",
+                index=False
+            )
+
+            st.success(
+                "Performance Saved!"
+            )
+
+    st.divider()
+
+    st.subheader(
+        "📊 Previous Records"
+    )
+
+    st.dataframe(
+        performance_df
+    )
+# --------------------------
+# ABOUT
+# --------------------------
+
+elif choice == "ℹ️ About":
+
+    st.header("🏆 About SportSync")
+
+    st.write("""
+SportSync is a sports facility
+booking and performance
+tracking platform.
+
+Features:
+
+• QR Booking
+
+• Performance Tracking
+
+• Coach Feedback
+
+• Real Time Capacity Tracking
+
+• Student & Coach Portals
+""")
