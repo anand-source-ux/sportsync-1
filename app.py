@@ -698,22 +698,80 @@ elif choice == "📈 Performance":
 
 elif choice == "ℹ️ About":
 
-    st.header("🏆 About SportSync")
+    st.markdown("""
+    <div style="
+    background:linear-gradient(135deg,#D8CCE8,#CBB7E8);
+    padding:50px;
+    border-radius:25px;
+    text-align:center;
+    margin-bottom:30px;
+    ">
+        <h1 style="
+        color:#1E293B;
+        font-size:52px;
+        margin-bottom:10px;
+        ">
+        🏆 About SportSync
+        </h1>
 
-    st.write("""
-SportSync is a sports facility
-booking and performance
-tracking platform.
+        <p style="
+        font-size:22px;
+        color:#334155;
+        ">
+        Smart Sports Facility Management & Performance Tracking
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
-Features:
+    st.markdown("### 🚀 What is SportSync?")
 
-• QR Booking
+    st.info(
+        """
+SportSync is a sports facility booking and athlete management platform.
 
-• Performance Tracking
+It allows students and athletes to:
+- Book sports facilities
+- Track performance records
+- Receive coach feedback
+- Access facilities through QR codes
+- Monitor sports progress over time
+        """
+    )
 
-• Coach Feedback
+    st.markdown("### ⭐ Key Features")
 
-• Real Time Capacity Tracking
+    c1, c2 = st.columns(2)
 
-• Student & Coach Portals
-""")
+    with c1:
+        st.success("📱 QR Facility Access")
+        st.success("📅 Smart Facility Booking")
+        st.success("📈 Performance Tracking")
+
+    with c2:
+        st.success("🏆 Coach Feedback")
+        st.success("📊 Live Analytics")
+        st.success("👥 Student & Coach Portals")
+
+    st.markdown("### 📊 Platform Statistics")
+
+    a, b, c, d = st.columns(4)
+
+    with a:
+        st.metric("🏀 Facilities", "8")
+
+    with b:
+        st.metric("👥 Users", "250+")
+
+    with c:
+        st.metric("📅 Bookings", "1200+")
+
+    with d:
+        st.metric("🏆 Coaches", "15")
+
+    st.markdown("### 💡 Our Mission")
+
+    st.warning(
+        """
+To make sports facility management simple, modern, and data-driven while helping athletes improve their performance through technology.
+        """
+    )
