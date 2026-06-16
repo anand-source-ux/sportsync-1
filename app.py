@@ -103,18 +103,32 @@ with col2:
             st.session_state.role = ""
             st.rerun()
 
-choice = st.radio(
-    "",
-    [
-        "🏠 Home",
-        "🔐 Login",
-        "📅 Book Slot",
-        "📈 Performance",
-        "ℹ️ About"
-    ],
-    horizontal=True,
-    label_visibility="collapsed"
-)
+nav1, nav2, nav3, nav4, nav5 = st.columns(5)
+
+if "page" not in st.session_state:
+    st.session_state.page = "🏠 Home"
+
+with nav1:
+    if st.button("🏠 Home"):
+        st.session_state.page = "🏠 Home"
+
+with nav2:
+    if st.button("🔐 Login"):
+        st.session_state.page = "🔐 Login"
+
+with nav3:
+    if st.button("📅 Book Slot"):
+        st.session_state.page = "📅 Book Slot"
+
+with nav4:
+    if st.button("📈 Performance"):
+        st.session_state.page = "📈 Performance"
+
+with nav5:
+    if st.button("ℹ️ About"):
+        st.session_state.page = "ℹ️ About"
+
+choice = st.session_state.page
 
 # --------------------------
 # HOME PAGE
