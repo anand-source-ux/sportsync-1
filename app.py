@@ -12,10 +12,16 @@ st.set_page_config(
 )
 st.markdown("""
 <style>
+body {
+    background-color: #F8FAFC;
+}
 
+.main {
+    background-color: #F8FAFC;
+}
 div[data-testid="metric-container"] {
-    background-color: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+    background-color: white;
+    border: 1px solid #E5E7EB;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
