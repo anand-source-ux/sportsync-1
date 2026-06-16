@@ -140,78 +140,78 @@ if choice == "🏠 Home":
         "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1600"
     ]
 
-    b1, b2 = st.columns([1,1])
+    col1, col2, col3 = st.columns([1,8,1])
 
-    with b1:
-        if st.button("⬅️ Previous"):
+    with col1:
+        if st.button("⬅️"):
             st.session_state.banner = (
                 st.session_state.banner - 1
             ) % len(banners)
 
-    with b2:
-        if st.button("Next ➡️"):
+    with col2:
+        st.image(
+            banners[st.session_state.banner],
+            use_container_width=True
+        )
+
+    with col3:
+        if st.button("➡️"):
             st.session_state.banner = (
                 st.session_state.banner + 1
             ) % len(banners)
+        st.markdown(
+            """
+            <div style='text-align:center;padding:20px;'>
 
-    st.image(
-        banners[st.session_state.banner],
-        use_container_width=True
-    )
+            <h1>Train • Track • Triumph</h1>
 
-    st.markdown(
-        """
-        <div style='text-align:center;padding:20px;'>
+            <h3>
+            Book facilities instantly and
+            improve with coach insights.
+            </h3>
 
-        <h1>Train • Track • Triumph</h1>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
-        <h3>
-        Book facilities instantly and
-        improve with coach insights.
-        </h3>
+        st.button("📅 Book Now")
 
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+        st.markdown("## 🚀 Features")
 
-    st.button("📅 Book Now")
+        c1, c2, c3, c4 = st.columns(4)
 
-    st.markdown("## 🚀 Features")
+        with c1:
+            st.success("🏀 Facility Booking")
 
-    c1, c2, c3, c4 = st.columns(4)
+        with c2:
+            st.success("📈 Performance Tracking")
 
-    with c1:
-        st.success("🏀 Facility Booking")
+        with c3:
+            st.success("📱 QR Access")
 
-    with c2:
-        st.success("📈 Performance Tracking")
+        with c4:
+            st.success("👨‍🏫 Coach Insights")
 
-    with c3:
-        st.success("📱 QR Access")
+        st.markdown("## 🔥 Popular Sports")
 
-    with c4:
-        st.success("👨‍🏫 Coach Insights")
+        s1, s2, s3, s4 = st.columns(4)
 
-    st.markdown("## 🔥 Popular Sports")
+        with s1:
+            st.metric("🏀 Basketball", "Available")
 
-    s1, s2, s3, s4 = st.columns(4)
+        with s2:
+            st.metric("⚽ Football", "Available")
 
-    with s1:
-        st.metric("🏀 Basketball", "Available")
+        with s3:
+            st.metric("🏏 Cricket", "Available")
 
-    with s2:
-        st.metric("⚽ Football", "Available")
+        with s4:
+            st.metric("🎾 Tennis", "Available")
 
-    with s3:
-        st.metric("🏏 Cricket", "Available")
-
-    with s4:
-        st.metric("🎾 Tennis", "Available")
-
-        # -----------------------------
-# LOGIN
-# -----------------------------
+    # -----------------------------
+    # LOGIN
+    # -----------------------------
 
 elif choice == "🔐 Login":
 
