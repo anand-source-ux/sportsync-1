@@ -28,10 +28,13 @@ div[data-testid="metric-container"] {
 }
 
 .stButton > button {
-    width: 100%;
-    border-radius: 10px;
-    height: 50px;
-    font-weight: bold;
+    background-color:#5B5FAD;
+    color:white;
+    border:none;
+    border-radius:12px;
+    height:50px;
+    font-weight:bold;
+    width:100%;
 }
 
 </style>
@@ -92,7 +95,7 @@ col1, col2 = st.columns([5,1])
 
 with col1:
     st.markdown(
-        "<h2 style='color:#00C896;'>🏆 SportSync</h2>",
+        "<h2 style='color:#2B2D6E;'>🏆 SportSync</h2>",
         unsafe_allow_html=True
     )
 
