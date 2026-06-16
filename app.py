@@ -343,6 +343,36 @@ your sports journey.
 
     with i4:
         st.image("https://images.unsplash.com/photo-1518611012118-696072aa579a?w=500")
+        s1, s2, s3, s4 = st.columns(4)
+
+    with s1:
+        st.markdown(
+            "<h4 style='text-align:center;'>🏀 Basketball</h4>",
+            unsafe_allow_html=True
+        )
+
+    with s2:
+        st.markdown(
+            "<h4 style='text-align:center;'>⚽ Football</h4>",
+            unsafe_allow_html=True
+        )
+
+    with s3:
+        st.markdown(
+            "<h4 style='text-align:center;'>🏏 Cricket</h4>",
+            unsafe_allow_html=True
+        )
+
+    with s4:
+        st.markdown(
+            "<h4 style='text-align:center;'>🏋️ Fitness</h4>",
+            unsafe_allow_html=True
+        )
+        
+        st.markdown(
+    "<h4 style='text-align:center;color:#6B5CA5;'>🏀 Basketball</h4>",
+    unsafe_allow_html=True
+)
     st.markdown(
         "<div style='height:40px;'></div>",
         unsafe_allow_html=True
