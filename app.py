@@ -266,8 +266,19 @@ your sports journey.
 
     c1,c2,c3,c4 = st.columns(4)
 
-    with c1:
-        st.info("🏀 Facility Booking")
+    st.markdown("""
+    <div style="
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(46,42,104,0.12);
+    ">
+    <h3>🏀</h3>
+    <h4>Facility Booking</h4>
+    <p>Book sports facilities instantly.</p>
+    </div>
+""", unsafe_allow_html=True)
 
     with c2:
         st.info("📈 Performance Tracking")
